@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Prioritas;
+use \App\Acara;
+use App\Http\Requests\AcaraRequest;
 
 class acaraController extends Controller
 {
@@ -15,8 +17,9 @@ class acaraController extends Controller
     public function index()
     {
      
+        $acaras = \App\Acara::all();
         $prioritas = \App\Prioritas::all();
-        return view('acara.index',compact('prioritas'));
+        return view('acara.index',compact('prioritas','acaras'));
 
     }
 
@@ -36,9 +39,20 @@ class acaraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AcaraRequest $request)
     {
-        //
+        
+        Acara::create([
+            'acara_nama' => $request->acara_nama,
+            'prioritas_id' => $request->prioritas_id,
+            'tanggal' => $request->tanggal,
+            'waktu' => $request->waktu,
+            'tempat_acara' => $request->tempat_acara,
+            'jumlah_personil' => $request->jumlah_personil
+        ]);
+
+        return redirect('/acara')->with('tambah_acara','Acara baru berhasil ditambahkan');
+
     }
 
     /**

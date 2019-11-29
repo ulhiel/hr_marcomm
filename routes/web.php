@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/acara', 'AcaraController@index')->name('acara.index');
+Route::post('/acara', 'AcaraController@store')->name('acara.store');

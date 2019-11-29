@@ -1,0 +1,9 @@
+
+
+    WHAT TO DO NEXT :
+
+    -Create show event
+    -Fixing date and time format
+    -Filtering upcoming event and past event
+    -assigning task
+    -scoring
