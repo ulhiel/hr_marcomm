@@ -31,21 +31,16 @@
                                 <div class="col-md-12">
                                     <table class="table">
                                         <thead>
-                                            <th>No</th>
                                             <th>Acara</th>
                                             <th>Tanggal</th>
-                                            <th>Waktu</th>
                                             <th>Tempat</th>
                                             <th>Personil</th>
-                                            <th>Status</th>
                                         </thead>
                                         <tbody>
                                             @foreach ( $acaras as $acara)
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $acara->acara_nama }}</td>
-                                                    <td>{{ $acara->tanggal }}</td>
-                                                    <td>{{ $acara->waktu }}</td>
+                                                    <td>{{ $acara->tanggal->format('d, M Y') }}</td>
                                                     <td>{{ $acara->tempat_acara }}</td>
                                                     <td>{{ $acara->jumlah_personil }}</td>
                                                     <td></td>

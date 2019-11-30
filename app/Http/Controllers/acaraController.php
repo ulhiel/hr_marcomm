@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Prioritas;
 use \App\Acara;
 use App\Http\Requests\AcaraRequest;
+use Carbon\Carbon;
 
 class acaraController extends Controller
 {
@@ -17,9 +18,12 @@ class acaraController extends Controller
     public function index()
     {
      
+
+        
         $acaras = \App\Acara::all();
         $prioritas = \App\Prioritas::all();
-        return view('acara.index',compact('prioritas','acaras'));
+
+        return view('acara.index',compact('prioritas','acaras')); 
 
     }
 
