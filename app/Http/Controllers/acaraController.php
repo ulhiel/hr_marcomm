@@ -18,12 +18,15 @@ class acaraController extends Controller
     public function index()
     {
      
-
+        $now = \Carbon\Carbon::now();
         
-        $acaras = \App\Acara::all();
-        $prioritas = \App\Prioritas::all();
+        $defaultDate = $now->format('Y').'-'.$now->format('m').'-'.$now->format('d');
+        $defaultTime = $now->format('H:i');
 
-        return view('acara.index',compact('prioritas','acaras')); 
+         $acaras = \App\Acara::all();
+         $prioritas = \App\Prioritas::all();
+
+         return view('acara.index',compact('prioritas','acaras','now','defaultDate','defaultTime')); 
 
     }
 
@@ -46,6 +49,8 @@ class acaraController extends Controller
     public function store(AcaraRequest $request)
     {
         
+        return $request;
+        /*
         Acara::create([
             'acara_nama' => $request->acara_nama,
             'prioritas_id' => $request->prioritas_id,
@@ -55,7 +60,7 @@ class acaraController extends Controller
             'jumlah_personil' => $request->jumlah_personil
         ]);
 
-        return redirect('/acara')->with('tambah_acara','Acara baru berhasil ditambahkan');
+        return redirect('/acara')->with('tambah_acara','Acara baru berhasil ditambahkan'); */
 
     }
 

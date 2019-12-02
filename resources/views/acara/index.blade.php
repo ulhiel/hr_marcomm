@@ -40,7 +40,7 @@
                                             @foreach ( $acaras as $acara)
                                                 <tr>
                                                     <td>{{ $acara->acara_nama }}</td>
-                                                    <td>{{ $acara->tanggal->format('d, M Y') }}</td>
+                                                    <td>{{ $acara->tanggal }}</td>
                                                     <td>{{ $acara->tempat_acara }}</td>
                                                     <td>{{ $acara->jumlah_personil }}</td>
                                                     <td></td>
@@ -88,7 +88,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="waktu">Waktu</label>
-                                            <input type="time" name="waktu" id="waktu" class="form-control @error('waktu') is-invalid @enderror" value="14:00">
+                                            <input type="time" name="waktu" id="waktu" value="{{ $defaultTime }}" class="form-control @error('waktu') is-invalid @enderror" value="14:00">
                                             @error('waktu')
                                                 <div class="invalid-feedback">
                                                     <small>Waktu harus diisi, kak! :)</small>
@@ -99,7 +99,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="tanggal">Tanggal</label>
-                                            <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror">
+                                            <input type="date" name="tanggal" id="tanggal" value="{{ $defaultDate }}" class="form-control @error('tanggal') is-invalid @enderror">
                                             @error('tanggal')
                                                 <div class="invalid-feedback">
                                                     <small>Yuk Diisi Tanggalnya</small>
