@@ -28,6 +28,7 @@ class acaraController extends Controller
 
          return view('acara.index',compact('prioritas','acaras','now','defaultDate','defaultTime')); 
 
+
     }
 
     /**
@@ -49,13 +50,16 @@ class acaraController extends Controller
     public function store(AcaraRequest $request)
     {
         
-        return $request;
+        $dateTime = $request->tanggal . ' ' . $request->waktu;
+        $tanggal = Carbon::parse($dateTime);
+
+        return $tanggal->format('M Y');
+                
         /*
         Acara::create([
             'acara_nama' => $request->acara_nama,
             'prioritas_id' => $request->prioritas_id,
-            'tanggal' => $request->tanggal,
-            'waktu' => $request->waktu,
+            'tanggal_waktu' => $tanggal,
             'tempat_acara' => $request->tempat_acara,
             'jumlah_personil' => $request->jumlah_personil
         ]);

@@ -8,7 +8,9 @@ class Acara extends Model
 {
     
     protected $fillable = [
-        'acara_nama','prioritas_id','tanggal','waktu','tempat_acara','jumlah_personil'
+        'acara_nama','prioritas_id','tanggal_waktu','tempat_acara','jumlah_personil'
     ];
+
+    protected $dates = ['tanggal_waktu'];
 
 }

@@ -40,7 +40,7 @@
                                             @foreach ( $acaras as $acara)
                                                 <tr>
                                                     <td>{{ $acara->acara_nama }}</td>
-                                                    <td>{{ $acara->tanggal }}</td>
+                                                    <td>{{ $acara->tanggal_waktu->format('d M Y') }}</td>
                                                     <td>{{ $acara->tempat_acara }}</td>
                                                     <td>{{ $acara->jumlah_personil }}</td>
                                                     <td></td>
