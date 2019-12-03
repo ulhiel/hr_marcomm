@@ -76,7 +76,8 @@ class acaraController extends Controller
      */
     public function show($id)
     {
-        //
+        $target = \App\Acara::where('acara_id',$id)->first();
+        return view('acara.show',compact('target'));
     }
 
     /**

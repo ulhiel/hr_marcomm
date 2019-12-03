@@ -39,7 +39,7 @@
                                         <tbody>
                                             @foreach ( $upcomings as $upcoming)
                                                 <tr>
-                                                    <td>{{ $upcoming->acara_nama }}</td>
+                                                    <td><a href="/acara/{{ $upcoming->acara_id }}">{{ $upcoming->acara_nama }}</a></td>
                                                     <td>{{ $upcoming->tanggal_waktu->format('d M Y') }}</td>
                                                     <td>{{ $upcoming->tempat_acara }}</td>
                                                     <td>{{ $upcoming->jumlah_personil }}</td>
@@ -73,7 +73,7 @@
                                     <tbody>
                                         @foreach ( $past_events as $past_event)
                                             <tr>
-                                                <td>{{ $past_event->acara_nama }}</td>
+                                                <td><a href="/acara/{{ $past_event->acara_id }}">{{ $past_event->acara_nama }}</a></td>
                                                 <td>{{ $past_event->tanggal_waktu->diffForHumans() }}</td>
                                                 <td>{{ $past_event->tempat_acara }}</td>
                                                 <td>{{ $past_event->jumlah_personil }}</td>
