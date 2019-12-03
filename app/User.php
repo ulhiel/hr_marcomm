@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','divisi_id','jurusan_id'
     ];
 
     /**
@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function divisi() {
+
+        return $this->belongsTo('App\Divisi');
+
+    }
+
+    public function jurusan() {
+
+        return $this->belongsTo('App\Jurusan');
+
+    }
+
 }
