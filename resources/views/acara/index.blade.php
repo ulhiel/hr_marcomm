@@ -20,7 +20,7 @@
                         Upcoming Events
                     </div>
                     <div class="card-body" style="overflow:auto;max-height:400px;">
-                        @if ( $acaras->count() < 1)
+                        @if ( $upcomings->count() < 1)
                             <div class="row justify-content-center align-items-center" style="min-height:150px">
                                 <div class="col-md-12 text-center">
                                     <h4>Whoops! There is no upcoming event available</h4>
@@ -37,12 +37,12 @@
                                             <th>Personil</th>
                                         </thead>
                                         <tbody>
-                                            @foreach ( $acaras as $acara)
+                                            @foreach ( $upcomings as $upcoming)
                                                 <tr>
-                                                    <td>{{ $acara->acara_nama }}</td>
-                                                    <td>{{ $acara->tanggal_waktu->format('d M Y') }}</td>
-                                                    <td>{{ $acara->tempat_acara }}</td>
-                                                    <td>{{ $acara->jumlah_personil }}</td>
+                                                    <td>{{ $upcoming->acara_nama }}</td>
+                                                    <td>{{ $upcoming->tanggal_waktu->format('d M Y') }}</td>
+                                                    <td>{{ $upcoming->tempat_acara }}</td>
+                                                    <td>{{ $upcoming->jumlah_personil }}</td>
                                                     <td></td>
                                                 </tr>
                                             @endforeach
@@ -57,8 +57,34 @@
                     <div class="card-header">
                         Past Events
                     </div>
-                    <div class="card-body" style="min-height:250px">
-                        Testing
+                    <div class="card-body" style="overflow:auto;max-height:400px;">
+                        @if ( $past_events->count() < 1)
+                            Whoops! It seems that there is no past event to show
+                        @else
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <thead>
+                                        <th>Acara</th>
+                                        <th>Tanggal</th>
+                                        <th>Tempat</th>
+                                        <th>Personil</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ( $past_events as $past_event)
+                                            <tr>
+                                                <td>{{ $past_event->acara_nama }}</td>
+                                                <td>{{ $past_event->tanggal_waktu->diffForHumans() }}</td>
+                                                <td>{{ $past_event->tempat_acara }}</td>
+                                                <td>{{ $past_event->jumlah_personil }}</td>
+                                                <td></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

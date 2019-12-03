@@ -23,10 +23,13 @@ class acaraController extends Controller
         $defaultDate = $now->format('Y').'-'.$now->format('m').'-'.$now->format('d');
         $defaultTime = $now->format('H:i');
 
-         $acaras = \App\Acara::all();
-         $prioritas = \App\Prioritas::all();
+        $acaras = \App\Acara::all();
+        $prioritas = \App\Prioritas::all();
 
-         return view('acara.index',compact('prioritas','acaras','now','defaultDate','defaultTime')); 
+        $upcomings = \App\Acara::where('tanggal_waktu','>', $now)->get();
+        $past_events = \App\Acara::where('tanggal_waktu','<', $now)->get();
+
+        return view('acara.index',compact('prioritas','acaras','now','defaultDate','defaultTime','upcomings','past_events')); 
 
 
     }
@@ -52,10 +55,7 @@ class acaraController extends Controller
         
         $dateTime = $request->tanggal . ' ' . $request->waktu;
         $tanggal = Carbon::parse($dateTime);
-
-        return $tanggal->format('M Y');
                 
-        /*
         Acara::create([
             'acara_nama' => $request->acara_nama,
             'prioritas_id' => $request->prioritas_id,
@@ -64,7 +64,7 @@ class acaraController extends Controller
             'jumlah_personil' => $request->jumlah_personil
         ]);
 
-        return redirect('/acara')->with('tambah_acara','Acara baru berhasil ditambahkan'); */
+        return redirect('/acara')->with('tambah_acara','Acara baru berhasil ditambahkan');
 
     }
 
